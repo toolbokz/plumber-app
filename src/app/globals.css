@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Layout + conversion notes:
+  - Dark base + high-contrast CTAs support fast scanning and mobile urgency.
+  - Smooth scroll helps the secondary CTA feel immediate without extra pages.
+*/
+
+:root {
+    color-scheme: light;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    /*
+        White background (requested):
+        - Keep it premium-trade with crisp dividers and strong CTA contrast.
+        - Use minimal shadows; rely on borders/rings.
+    */
+    @apply bg-white text-slate-950 antialiased;
+}
+
+::selection {
+    @apply bg-sky-200;
+}
+
+@layer components {
+    /*
+    Shared primitives keep the UI cohesive and "expensive".
+    Use these to keep JSX class lists clean and intentional.
+  */
+
+    .pf-pill {
+        /* Bold trade cue: slightly stronger outline + tighter copy rhythm */
+        @apply inline-flex items-center gap-2 rounded-full bg-slate-50 px-3 py-1 text-xs font-semibold tracking-wide text-slate-900 ring-1 ring-slate-200;
+    }
+
+    .pf-panel {
+        @apply rounded-xl bg-slate-50 ring-1 ring-slate-200;
+    }
+
+    .pf-card {
+        /* Premium depth without heavy shadow */
+        @apply rounded-2xl bg-white ring-1 ring-slate-200;
+    }
+
+    .pf-card-hover {
+        @apply transition-colors hover:bg-slate-50;
+    }
+
+    .pf-btn {
+        /* Strong CTA presence (trade) while staying clean */
+        @apply inline-flex items-center justify-center rounded-xl font-semibold ring-1 ring-slate-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400;
+    }
+
+    .pf-btn-primary {
+        /* Premium-trade CTA: confident accent on white */
+        @apply bg-sky-600 text-white hover:bg-sky-500 shadow-sm shadow-sky-900/10;
+    }
+
+    .pf-btn-secondary {
+        @apply bg-white text-slate-950 hover:bg-slate-50;
+    }
+
+    .pf-input {
+        @apply mt-2 w-full rounded-xl bg-white px-4 py-3 text-sm text-slate-950 ring-1 ring-slate-200 placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400;
+    }
+
+    /*
+      Section surface:
+            Keep sections visually consistent with clean dividers (no per-section gradients).
+    */
+    .pf-section {
+        @apply border-t border-slate-200;
+    }
+}
