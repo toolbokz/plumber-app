@@ -1,17 +1,16 @@
 import { SITE } from "@/lib/site";
 
 export function StickyCallButton() {
-    // Conversion note: always-visible, thumb-friendly CTA on mobile.
     return (
         <div className="fixed inset-x-0 bottom-0 z-50 md:hidden">
             <div className="mx-auto max-w-6xl px-4 pb-4">
                 <div
                     aria-hidden="true"
-                    className="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-white/95 to-transparent"
+                    className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-white via-white/95 to-transparent"
                 />
                 <a
                     href={SITE.phoneHref}
-                    className="pf-btn pf-btn-primary relative flex w-full items-center justify-center gap-2 px-4 py-3 text-base shadow-sm shadow-black/30"
+                    className="relative flex w-full items-center justify-center gap-2.5 rounded-2xl bg-sky-600 px-5 py-4 text-base font-semibold text-white shadow-lg shadow-sky-600/30 transition-all active:scale-[0.98]"
                     aria-label={`Call ${SITE.name} on ${SITE.phoneDisplay}`}
                 >
                     <svg
@@ -28,8 +27,8 @@ export function StickyCallButton() {
                     </svg>
                     <span>Call {SITE.phoneDisplay}</span>
                 </a>
-                <p className="mt-2 text-center text-xs text-slate-600">
-                    24/7 emergency plumber • Fast response
+                <p className="relative mt-2 text-center text-xs font-medium text-slate-500">
+                    24/7 emergency plumber &middot; Fast response
                 </p>
             </div>
         </div>

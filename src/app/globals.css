@@ -2,80 +2,87 @@
 @tailwind components;
 @tailwind utilities;
 
-/*
-  Layout + conversion notes:
-  - Dark base + high-contrast CTAs support fast scanning and mobile urgency.
-  - Smooth scroll helps the secondary CTA feel immediate without extra pages.
-*/
-
 :root {
     color-scheme: light;
 }
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
 }
 
 body {
-    /*
-        White background (requested):
-        - Keep it premium-trade with crisp dividers and strong CTA contrast.
-        - Use minimal shadows; rely on borders/rings.
-    */
     @apply bg-white text-slate-950 antialiased;
 }
 
 ::selection {
-    @apply bg-sky-200;
+    @apply bg-sky-100 text-sky-900;
+}
+
+@layer base {
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        @apply text-balance;
+    }
+
+    p {
+        @apply text-pretty;
+    }
 }
 
 @layer components {
-    /*
-    Shared primitives keep the UI cohesive and "expensive".
-    Use these to keep JSX class lists clean and intentional.
-  */
 
+    /* ── Pills / Badges ── */
     .pf-pill {
-        /* Bold trade cue: slightly stronger outline + tighter copy rhythm */
-        @apply inline-flex items-center gap-2 rounded-full bg-slate-50 px-3 py-1 text-xs font-semibold tracking-wide text-slate-900 ring-1 ring-slate-200;
+        @apply inline-flex items-center gap-2 rounded-full bg-slate-50 px-3.5 py-1.5 text-xs font-semibold tracking-wide text-slate-700 ring-1 ring-slate-900/5;
     }
 
+    /* ── Panels ── */
     .pf-panel {
-        @apply rounded-xl bg-slate-50 ring-1 ring-slate-200;
+        @apply rounded-xl bg-slate-50 ring-1 ring-slate-900/5;
     }
 
+    /* ── Cards ── */
     .pf-card {
-        /* Premium depth without heavy shadow */
-        @apply rounded-2xl bg-white ring-1 ring-slate-200;
+        @apply rounded-2xl bg-white shadow-sm shadow-slate-900/5 ring-1 ring-slate-900/5;
     }
 
     .pf-card-hover {
-        @apply transition-colors hover:bg-slate-50;
+        @apply transition-all duration-200 hover:shadow-md hover:shadow-slate-900/5 hover:ring-slate-900/10;
     }
 
+    /* ── Buttons ── */
     .pf-btn {
-        /* Strong CTA presence (trade) while staying clean */
-        @apply inline-flex items-center justify-center rounded-xl font-semibold ring-1 ring-slate-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400;
+        @apply inline-flex items-center justify-center rounded-xl font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2;
     }
 
     .pf-btn-primary {
-        /* Premium-trade CTA: confident accent on white */
-        @apply bg-sky-600 text-white hover:bg-sky-500 shadow-sm shadow-sky-900/10;
+        @apply bg-sky-600 text-white shadow-sm shadow-sky-600/25 hover:bg-sky-500 hover:shadow-md hover:shadow-sky-500/25;
     }
 
     .pf-btn-secondary {
-        @apply bg-white text-slate-950 hover:bg-slate-50;
+        @apply bg-white text-slate-950 ring-1 ring-slate-900/10 hover:bg-slate-50 hover:ring-slate-900/15;
     }
 
+    .pf-btn-dark {
+        @apply bg-slate-900 text-white shadow-sm hover:bg-slate-800;
+    }
+
+    /* ── Inputs ── */
     .pf-input {
-        @apply mt-2 w-full rounded-xl bg-white px-4 py-3 text-sm text-slate-950 ring-1 ring-slate-200 placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400;
+        @apply mt-2 w-full rounded-xl border-0 bg-white px-4 py-3 text-sm text-slate-950 shadow-sm ring-1 ring-slate-900/10 placeholder:text-slate-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500;
     }
 
-    /*
-      Section surface:
-            Keep sections visually consistent with clean dividers (no per-section gradients).
-    */
+    /* ── Section dividers ── */
     .pf-section {
-        @apply border-t border-slate-200;
+        @apply border-t border-slate-100;
+    }
+
+    /* ── Photo credit ── */
+    .pf-credit {
+        @apply absolute bottom-2 right-2 rounded-md bg-black/40 px-2 py-0.5 text-[10px] text-white/70 backdrop-blur-sm;
     }
 }

@@ -11,9 +11,9 @@ export function CallbackNotice() {
     return (
         <div
             role="status"
-            className="mt-4 rounded-xl bg-emerald-500/10 p-4 text-sm text-emerald-200 ring-1 ring-emerald-400/30"
+            className="mt-4 rounded-xl bg-emerald-50 p-4 text-sm font-medium text-emerald-800 ring-1 ring-emerald-200"
         >
-            Request sent — we’ll contact you as soon as possible.
+            <span className="mr-1.5">✓</span> Request received — we&apos;ll be in touch shortly.
         </div>
     );
 }

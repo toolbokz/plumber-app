@@ -7,8 +7,20 @@ const config: Config = {
     ],
     theme: {
         extend: {
-            // Keep styling premium + consistent by leaning on Tailwind's defaults.
-            // If you later add a design system, extend tokens here.
+            animation: {
+                "fade-in": "fadeIn 0.5s ease-out",
+                "slide-up": "slideUp 0.5s ease-out",
+            },
+            keyframes: {
+                fadeIn: {
+                    from: { opacity: "0" },
+                    to: { opacity: "1" },
+                },
+                slideUp: {
+                    from: { opacity: "0", transform: "translateY(12px)" },
+                    to: { opacity: "1", transform: "translateY(0)" },
+                },
+            },
         },
     },
     plugins: [],

@@ -1,79 +1,117 @@
 import { Container } from "@/components/Container";
 import Image from "next/image";
+import { fetchUnsplashImage } from "@/lib/images";
 
 import plumber1 from "@/images/plumber-1.jpg";
 
 const REASONS = [
     {
-        title: "Available 24/7",
-        description: "Emergency plumbing doesn’t wait — neither do we.",
+        title: "Available 24/7, 365 days",
+        description:
+            "Plumbing emergencies don't follow business hours. We're on call around the clock — nights, weekends, and public holidays.",
+        icon: (
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20Z" />
+                <path d="M12 6v6l4 2" />
+            </svg>
+        ),
     },
     {
-        title: "Fast response times",
-        description: "We prioritize urgent callouts and keep you updated.",
+        title: "Rapid response times",
+        description:
+            "We prioritise urgent callouts and keep you updated with clear ETAs. No guessing, no waiting in the dark.",
+        icon: (
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8Z" />
+            </svg>
+        ),
     },
     {
-        title: "Clear communication",
-        description: "Straight answers, practical options, and no confusion.",
+        title: "Transparent, upfront pricing",
+        description:
+            "We explain the job, outline your options, and provide clear pricing before any work begins. No surprises.",
+        icon: (
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M20.59 13.41 11 3H4v7l9.59 9.59a2 2 0 0 0 2.82 0l4.18-4.18a2 2 0 0 0 0-2.82Z" />
+                <path d="M7 7h.01" />
+            </svg>
+        ),
     },
     {
-        title: "Quality workmanship",
-        description: "Repairs done properly, using proven methods and materials.",
+        title: "Quality workmanship guaranteed",
+        description:
+            "Repairs done properly, using proven materials and techniques. We stand behind every job we complete.",
+        icon: (
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
+                <path d="m9 12 2 2 4-4" />
+            </svg>
+        ),
     },
     {
-        title: "Local NZ service",
-        description: "Professional plumbing with a local, reliable approach.",
+        title: "Local NZ plumber you can trust",
+        description:
+            "Fully qualified, licensed, and insured. We treat every home and business with care and respect.",
+        icon: (
+            <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 21s6-4.35 6-10a6 6 0 0 0-12 0c0 5.65 6 10 6 10Z" />
+                <path d="M12 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+            </svg>
+        ),
     },
 ] as const;
 
 export function WhyChoose() {
     return (
-        <section aria-labelledby="why-heading" className="pf-section">
-            <Container className="py-16">
-                <div className="grid gap-10 lg:grid-cols-2 lg:items-start">
+        <section id="why" aria-labelledby="why-heading" className="border-t border-slate-100">
+            <Container className="py-20 sm:py-24">
+                <div className="grid gap-12 lg:grid-cols-2 lg:items-start lg:gap-16">
                     <div>
-                        <h2 id="why-heading" className="text-2xl font-semibold tracking-tight text-slate-950">
+                        <p className="text-sm font-semibold uppercase tracking-widest text-sky-600">
                             Why choose Plumbfix
+                        </p>
+                        <h2
+                            id="why-heading"
+                            className="mt-3 text-3xl font-bold tracking-tight text-slate-950 sm:text-4xl"
+                        >
+                            Built around speed, trust, and doing the job right.
                         </h2>
-                        <p className="mt-3 max-w-2xl text-slate-700">
-                            We’re built around speed, trust, and doing the right thing — especially when
-                            the situation is urgent.
+                        <p className="mt-4 text-lg leading-relaxed text-slate-600">
+                            When you need a plumber, you need someone reliable. We combine fast
+                            response with honest communication and workmanship you can count on.
                         </p>
 
-                        <div className="mt-6 overflow-hidden rounded-2xl ring-1 ring-slate-200">
-                            <div className="relative h-[260px] w-full sm:h-[228px] lg:h-[450px]">
+                        <div className="mt-8 overflow-hidden rounded-2xl shadow-sm ring-1 ring-slate-900/5">
+                            <div className="relative h-[280px] w-full lg:h-[400px]">
                                 <Image
                                     src={plumber1}
-                                    alt="Plumber working on a repair"
+                                    alt="Professional plumber at work"
                                     fill
                                     className="object-cover"
                                     sizes="(min-width: 1024px) 520px, 100vw"
+                                    placeholder="blur"
                                 />
                             </div>
                         </div>
                     </div>
 
-                    <div className="grid gap-4">
-                        {REASONS.map((r) => (
-                            <div key={r.title} className="pf-card pf-card-hover p-6">
-                                <div className="flex items-start gap-3">
-                                    <div className="pf-panel grid h-9 w-9 place-items-center">
-                                        <svg
-                                            aria-hidden="true"
-                                            viewBox="0 0 24 24"
-                                            className="h-5 w-5 text-sky-600"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            strokeWidth="2"
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                        >
-                                            <path d="M20 6 9 17l-5-5" />
-                                        </svg>
+                    <div className="grid gap-3 lg:pt-4">
+                        {REASONS.map((r, i) => (
+                            <div
+                                key={r.title}
+                                className="group rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-900/5 transition-all duration-200 hover:shadow-md hover:ring-slate-900/10"
+                            >
+                                <div className="flex items-start gap-4">
+                                    <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl bg-sky-50 text-sky-600 transition-colors group-hover:bg-sky-100">
+                                        {r.icon}
                                     </div>
                                     <div>
-                                        <h3 className="text-base font-semibold text-slate-950">{r.title}</h3>
-                                        <p className="mt-2 text-sm leading-relaxed text-slate-700">{r.description}</p>
+                                        <h3 className="text-base font-semibold text-slate-950">
+                                            {r.title}
+                                        </h3>
+                                        <p className="mt-1.5 text-sm leading-relaxed text-slate-600">
+                                            {r.description}
+                                        </p>
                                     </div>
                                 </div>
                             </div>
